@@ -1,0 +1,390 @@
+
+/* =========================
+   01. 기본 설정
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #e8ded4;
+}
+
+/* 전체 화면 */
+
+.screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+/* =========================
+   02. 카페 배경
+========================= */
+
+.cafe-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  height: 100%;
+  width: auto;
+  max-width: none;
+
+  display: block;
+
+  transform: translateX(0);
+
+  transition:
+    transform 1.5s ease-in-out;
+}
+
+
+/* =========================
+   03. 텍스트 영역 공통
+========================= */
+
+.scene-text {
+  position: absolute;
+
+  top: 43%;
+  left: 50%;
+
+  width: 90%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  transform: translate(-50%, -50%);
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   04. 텍스트 등장 / 퇴장
+========================= */
+
+.title-image,
+.subtitle-image,
+.scroll-guide,
+.click-guide {
+  opacity: 0;
+  translate: 0 25px;
+
+  transition:
+    opacity 0.7s ease,
+    translate 0.7s ease;
+}
+
+/* 등장 */
+
+.title-image.visible,
+.subtitle-image.visible,
+.scroll-guide.visible,
+.click-guide.visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* 위로 사라짐 */
+
+.title-image.exit,
+.subtitle-image.exit,
+.scroll-guide.exit,
+.click-guide.exit {
+  opacity: 0;
+  translate: 0 -45px;
+}
+
+
+/* =========================
+   05. 대제목
+========================= */
+
+.title-image {
+  width: 400px;
+  max-width: 80%;
+  height: auto;
+}
+
+
+/* =========================
+   06. 소제목
+========================= */
+
+.subtitle-image {
+  width: 350px;
+  max-width: 75%;
+  height: auto;
+
+  margin-top: 45px;
+}
+
+
+/* =========================
+   07. 첫 번째 장면
+========================= */
+
+.scene-1 {
+  top: 43%;
+  left: 50%;
+}
+
+
+/* =========================
+   08. 두 번째 장면
+========================= */
+
+.scene-2 {
+  top: 43%;
+  left: 50%;
+
+  transition:
+    left 1.5s ease-in-out;
+}
+
+/* STEP 7에서 왼쪽 이동 */
+
+.scene-2.move-left {
+  left: 25%;
+}
+
+
+/* =========================
+   09. 스크롤 안내문구
+========================= */
+
+.scroll-guide {
+  position: absolute;
+
+  bottom: 5%;
+  left: 50%;
+
+  width: 220px;
+  height: auto;
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   10. 클릭 안내문구
+========================= */
+
+.click-guide {
+  position: absolute;
+
+  bottom: 5%;
+  left: 24%;
+
+  width: 220px;
+  height: auto;
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   11. 오른쪽 그래픽 전체 영역
+========================= */
+
+.why-cafe-group {
+  position: absolute;
+
+  top: 18%;
+  left: 53%;
+
+  width: 34vw;
+  height: 68vh;
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   12. 왜 카페일까요? 제목
+========================= */
+
+.why-cafe-title {
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+
+  width: 180px;
+  height: auto;
+
+  opacity: 0;
+
+  transform:
+    translateX(-50%)
+    translateY(25px);
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+/* 클릭 시 등장 */
+
+.why-cafe-title.visible {
+  opacity: 1;
+
+  transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+
+/* =========================
+   13. 원형 그래픽 공통
+========================= */
+
+.circle {
+  position: absolute;
+
+  width: 53%;
+  height: auto;
+
+  opacity: 0;
+  translate: 0 35px;
+
+  transition:
+    opacity 0.8s ease,
+    translate 0.8s ease;
+}
+
+/* 클릭 시 원 등장 */
+
+.circle.visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+
+/* =========================
+   14. 첫 번째 원
+   쉽게 접근 가능한 위치
+========================= */
+
+.circle-location {
+  top: 13%;
+  left: 23.5%;
+}
+
+
+/* =========================
+   15. 두 번째 원
+   자유롭고 열린 분위기
+========================= */
+
+.circle-open {
+  top: 52%;
+  left: 0%;
+}
+
+
+/* =========================
+   16. 세 번째 원
+   다양한 목적에 맞는 유연성
+========================= */
+
+.circle-flexible {
+  top: 52%;
+  right: 0%;
+}
+
+
+/* =========================
+   17. 클릭 가능한 화면
+========================= */
+
+.screen.click-enabled {
+  cursor: pointer;
+}
+
+
+/* =========================
+   18. 작은 화면 대응
+========================= */
+
+@media (max-width: 900px) {
+
+  /* 대제목 */
+
+  .title-image {
+    width: 320px;
+  }
+
+  /* 소제목 */
+
+  .subtitle-image {
+    width: 290px;
+  }
+
+  /* 왼쪽 텍스트 */
+
+  .scene-2.move-left {
+    left: 25%;
+  }
+
+  /* 클릭 안내문구 */
+
+  .click-guide {
+    left: 30%;
+    width: 180px;
+  }
+
+  /* 오른쪽 그래픽 */
+
+  .why-cafe-group {
+    top: 20%;
+    left: 51%;
+
+    width: 44vw;
+    height: 60vh;
+  }
+
+  /* 오른쪽 제목 */
+
+  .why-cafe-title {
+    width: 150px;
+  }
+
+  /* 원형 그래픽 */
+
+  .circle {
+    width: 53%;
+  }
+
+  .circle-location {
+    top: 13%;
+    left: 23.5%;
+  }
+
+  .circle-open {
+    top: 52%;
+    left: 0%;
+  }
+
+  .circle-flexible {
+    top: 52%;
+    right: 0%;
+  }
+
+}
